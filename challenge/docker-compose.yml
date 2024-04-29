@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  simulator:
+    image: bluenviron/mediamtx
+    ports:
+      - 8800:8554
+  proxy:
+    image: bluenviron/mediamtx:latest-ffmpeg
+    volumes:
+      - ./mediamtx.yml:/mediamtx.yml
+    network_mode: host
+  server:
+    image: bluenviron/mediamtx
+    ports:
+      - 8900:8554
